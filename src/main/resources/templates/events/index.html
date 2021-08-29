@@ -1,11 +1,12 @@
 <!Doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns:pth="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <title>All Events</title>
 </head>
 <body>
 <h1>All Events</h1>
+<p th:unless="${events} and ${events.size()}">No Events!</p>
 
 <th:block th:each="event : ${events}">
     <li th:text="${event}">Events Name</li>
