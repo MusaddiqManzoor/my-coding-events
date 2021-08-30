@@ -6,6 +6,8 @@
 <h1>All Events</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
+<link rel="stylesheet" th:href="@{/styles.css}">
+
 <p th:unless="${events} and ${events.size()}">No Events!</p>
 
 
@@ -13,10 +15,15 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Description</th>
+            <th>Address</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event}">Events Name</td>
+        <td th:text="${event.getKey()}">Events Name</td>
+        <td th:text="${event.getValue()}">Events Value</td>
+        <td th:replace="fragments :: address"></td>
+        <td><img th:src="@{/location.jpg}" alt="location"></td>
     </tr>
 
 </table>
