@@ -12,11 +12,15 @@
 <table class="table table-striped" >
     <thead>
         <tr>
+            <th>Id</th>
             <th>Name</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event}">Events Name</td>
+        <td th:text="${event.id}">Events ID</td>
+        <td th:text="${event.name}">Events Name</td>
+        <td th:text="${event.description}">Events Description</td>
     </tr>
 
 </table>
