@@ -22,7 +22,7 @@
         <td th:text="${event.name}">Events Name</td>
         <td th:text="${event.description}">Events Description</td>
         <td>
-            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
+            <a th:href="@{/events/edit/{eventId}(eventId=${event.id})}">Edit</a>
         </td>
     </tr>
 

@@ -4,10 +4,10 @@
 
 <body class="container">
 
-<h1>Create Event</h1>
+<h1>Edit Event</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" th:action="@{/events/edit}" >
+<form method="post" th:action="@{/events/edit}">
     <div class="form-group">
         <label>Name
             <input type="text" name="name" th:value = "${event.getName()}" class="form-control">

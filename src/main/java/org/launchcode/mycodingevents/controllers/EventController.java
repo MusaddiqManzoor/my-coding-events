@@ -54,8 +54,8 @@ public class EventController {
         // controller code will go here
         Event selectedEvent = EventData.getById(eventId);
        model.addAttribute("event",selectedEvent);
-       String title = "Edit Event" + selectedEvent.getName() + "(id=" + selectedEvent.getId() + ")";
-       model.addAttribute("title", title);
+//       String title = "Edit Event" + selectedEvent.getName() + "(id=" + selectedEvent.getId() + ")";
+//       model.addAttribute("title", title);
        return "events/edit";
     }
 
