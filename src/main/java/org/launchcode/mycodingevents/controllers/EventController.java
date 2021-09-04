@@ -4,8 +4,10 @@ import org.launchcode.mycodingevents.controllers.models.Event;
 import org.launchcode.mycodingevents.data.EventData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +24,22 @@ public class EventController {
     }
 
     @GetMapping("create")
-    public String renderCreateEventForm() {
+    public String renderCreateEventForm(Model model) {
+
+        model.addAttribute("title", "Create Event");
+        model.addAttribute("event", new Event());
         return "events/create";
     }
 
     @PostMapping("create")
-    public String createEvent(@ModelAttribute Event newEvent) {
-        EventData.add(newEvent);
-        return "redirect:";
+    public String createEvent(@ModelAttribute @Valid Event newEvent,
+                              Errors errors, Model model) {
+        if(errors.hasErrors()) {
+            model.addAttribute("title", "Create Event");
+            return "events/create";
+        }
+            EventData.add(newEvent);
+            return "redirect:";
     }
 
     @GetMapping("delete")
@@ -60,11 +70,15 @@ public class EventController {
     }
 
     @PostMapping("edit")
-    public String processEditForm(int eventId, String name, String description) {
+    public String processEditForm(int eventId, String name, String description, String email, String location,
+                                  int number) {
         // controller code will go here
         Event selectedEvent = EventData.getById(eventId);
         selectedEvent.setName(name);
         selectedEvent.setDescription(description);
+        selectedEvent.setContactEmail(email);
+        selectedEvent.setEventLocation(location);
+        selectedEvent.setNumberOfAttendees(number);
         return "redirect:";
     }
 }
